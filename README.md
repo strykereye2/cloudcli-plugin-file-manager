@@ -17,7 +17,7 @@ A file browser tab plugin for [CloudCLI](https://github.com/siteboon/claudecodeu
 
 | Dark Mode | Light Mode |
 |-----------|------------|
-| ![Dark](https://via.placeholder.com/400x250/08080f/e2e0f0?text=File+Browser+Dark) | ![Light](https://via.placeholder.com/400x250/fafaf9/0f0e1a?text=File+Browser+Light) |
+| ![Dark](img/Dark.jpg) | ![Light](img/Light.jpg) |
 
 ## Installation
 
