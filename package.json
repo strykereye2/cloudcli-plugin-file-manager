@@ -1,0 +1,31 @@
+{
+  "name": "cloudcli-plugin-file-manager",
+  "version": "1.0.0",
+  "description": "Browse workspace files, preview text, and download directly from CloudCLI.",
+  "author": "BillyCC",
+  "license": "MIT",
+  "keywords": [
+    "cloudcli",
+    "claude-code",
+    "plugin",
+    "file-manager",
+    "file-browser"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/strykereye2/cloudcli-plugin-file-manager.git"
+  },
+  "type": "module",
+  "main": "dist/server.js",
+  "files": [
+    "dist/",
+    "manifest.json",
+    "icon.svg",
+    "README.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "build": "cp src/server.js dist/server.js && cp src/index.js dist/index.js",
+    "dev": "node dist/server.js"
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "name": "file-manager",
+  "displayName": "Files",
+  "version": "1.0.0",
+  "description": "Browse workspace files, preview text, and download directly from CloudCLI.",
+  "author": "BillyCC",
+  "icon": "icon.svg",
+  "type": "module",
+  "slot": "tab",
+  "entry": "dist/index.js",
+  "server": "dist/server.js",
+  "permissions": []
+}
