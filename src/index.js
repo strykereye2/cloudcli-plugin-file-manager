@@ -135,7 +135,7 @@ export function mount(container, api) {
   let searchQuery = '';
   let searchResults = null;
   let previewData = null;
-  let dark = api.context.theme === 'dark';
+  let dark = api.context?.theme === 'dark' || document.documentElement.classList.contains('dark');
 
   injectStyles(dark);
 
@@ -144,6 +144,19 @@ export function mount(container, api) {
     injectStyles(dark);
     render();
   });
+
+  // Robust fallback: CloudCLI toggles .dark on <html> — observe it directly
+  const htmlEl = document.documentElement;
+  const themeObserver = new MutationObserver(() => {
+    const nowDark = htmlEl.classList.contains('dark');
+    if (nowDark !== dark) {
+      dark = nowDark;
+      injectStyles(dark);
+      render();
+    }
+  });
+  themeObserver.observe(htmlEl, { attributes: true, attributeFilter: ['class'] });
+  container._fmThemeObserver = themeObserver;
 
   // ── Data fetching ─────────────────────────────────────────────────
 
@@ -391,4 +404,9 @@ export function unmount(container) {
   container.innerHTML = '';
   const styles = document.getElementById('fm-styles');
   if (styles) styles.remove();
+  // Clean up the theme observer if it exists
+  if (container._fmThemeObserver) {
+    container._fmThemeObserver.disconnect();
+    delete container._fmThemeObserver;
+  }
 }
